@@ -1,4 +1,4 @@
-const list = [100, 4, 3, 5, 1, 2, 10];
+const list = [100, 60, 4, 33, 3, 5, 1, 2, 10];
 
 const bucketSort = (arr) => {
   let minVal = arr[0];
@@ -34,10 +34,11 @@ const bucketSort = (arr) => {
   let returnVal = [];
 
   console.log("ALL BUCKS", { allBuckets });
+
+  // sort each bucket and push it to the main array
   for (let i = 0; i < allBuckets.length; i++) {
     const bucket = allBuckets[i];
-    // sort each individual bucket
-    // just using built-in sort here
+    // just using built-in sort here, but it could be a better sort
     bucket.sort();
 
     returnVal = [...returnVal, ...bucket];
