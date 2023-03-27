@@ -1,5 +1,6 @@
 /*
 Basically a bad sort.
+- The ultimate naive example
 - very slow, with a worst and average case of O(n^2)
 - best case is O(n), with already sorted data.
 */
