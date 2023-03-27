@@ -4,43 +4,43 @@
 - for all cases it is O(nlogn)
 */
 
-const list = [100, 60, 1, 4, 33, 3, 5, 2, 10, 11];
+const list = [60, 1, 100, 1, 4, 33, 2, 5, 11, 10, 3, 44];
 
 const heapSort = (inputData) => {
   let data = [...inputData];
   let len = data.length;
 
-  // build max heap
+  // build max heap by rearranging the array
   for (let i = Math.floor(len / 2) - 1; i >= 0; i--) {
-    createHeap(data, len, i);
+    createMaxHeap(data, len, i);
   }
 
   // extract every element from the heap
   for (let i = len - 1; i > 0; i--) {
-    let temp = data[0];
-    data[0] = data[i];
-    data[i] = temp;
+    [data[i], data[0]] = [data[0], data[i]];
 
-    createHeap(data, len, 0);
+    createMaxHeap(data, i, 0);
   }
 
   return data;
 };
 
-const createHeap = (data, length, index) => {
+const createMaxHeap = (data, length, index) => {
   let largest = index;
   let left = 2 * index + 1;
   let right = 2 * index + 2;
 
-  if (left < length && data[largest] < data[right]) {
+  if (left < length && data[index] < data[left]) {
+    largest = left;
+  }
+
+  if (right < length && data[largest] < data[right]) {
     largest = right;
   }
 
   if (largest !== index) {
     [data[index], data[largest]] = [data[largest], data[index]];
 
-    createHeap(data, length, largest);
+    createMaxHeap(data, length, largest);
   }
 };
-
-console.log(list, heapSort(list));
