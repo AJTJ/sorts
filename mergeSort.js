@@ -5,7 +5,7 @@
 
 const list = [4, 3, 5, 1, 2];
 
-const mergeSort = (data) => {
+export const mergeSort = (data, leftInput, midInput, rightInput) => {
   // first step is break the data down into single items
   if (data.length < 2) {
     return data;

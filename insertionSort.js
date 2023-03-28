@@ -9,10 +9,13 @@ const list = [4, 3, 5, 1, 2];
 
 // not in-place, but inserting, as per its namesake.
 // it can be written in-place, swapping.
-const insertionNewList = (inputList) => {
+export const insertionNewList = (inputList, startI, endI) => {
   let list = [];
 
-  for (let i = 0; i < inputList.length; i++) {
+  let start = startI || 0;
+  let end = endI + 1 || inputList.length;
+
+  for (let i = start; i < end; i++) {
     // place the new value on the end of the new list
     list.push(inputList[i]);
 
