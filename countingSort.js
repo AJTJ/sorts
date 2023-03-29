@@ -37,7 +37,6 @@ const countingSort = (data) => {
 
   console.log("incremented countArray: ", countArray);
 
-  let curSum = 0;
   // add sums
   for (let i = 1; i < countArray.length; i++) {
     countArray[i] += countArray[i - 1];
@@ -49,13 +48,19 @@ const countingSort = (data) => {
   // in reverse for stability
   for (let i = data.length - 1; i >= 0; i--) {
     const origNum = data[i];
-    let iOrigNumInCountArray = countArray[origNum];
+    // console.log("M1", { origNum });
+    let countArrayValue = countArray[origNum];
+    // console.log("M2", { countArray, countArrayValue });
 
-    outputArray[iOrigNumInCountArray - 1] = data[i];
-    countArray[data[i]]--;
+    console.log({ countArrayValue });
+
+    outputArray[countArrayValue - 1] = origNum;
+    countArray[origNum]--;
   }
+
+  console.log("S2", { countArray });
 
   return outputArray;
 };
 
-console.log("out", countingSort(list));
+console.log(list, "out", countingSort(list));
