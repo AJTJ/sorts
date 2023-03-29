@@ -48,7 +48,10 @@ const countingSort = (data) => {
   // build output array
   // in reverse for stability
   for (let i = data.length - 1; i >= 0; i--) {
-    outputArray[countArray[data[i]] - 1] = data[i];
+    const origNum = data[i];
+    let iOrigNumInCountArray = countArray[origNum];
+
+    outputArray[iOrigNumInCountArray - 1] = data[i];
     countArray[data[i]]--;
   }
 
